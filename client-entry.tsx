@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 // import ReactDOM from 'react-dom/client'
 // import App from './App'
 import './src/index.css';
@@ -11,15 +11,24 @@ import './src/index.css';
 
 declare const growiFacade: any;
 
-export const activateJstest = (): void => {
-  growiFacade.markdownRenderer.optionsGenerators.customGeneratePreviewOptions = (pagePath: string, config: any) => {
-    const options = growiFacade.markdownRenderer.optionsGenerators.generatePreviewOptions(pagePath, config);
+const activate = (): void => {
+  const { optionsGenerators } = growiFacade.markdownRenderer;
+  optionsGenerators.customGeneratePreviewOptions = (pagePath: string, config: any) => {
+    const options = optionsGenerators.generatePreviewOptions(pagePath, config);
     options.components.code = () => 'code';
     options.components.lsx = () => <button>lsx</button>;
     return options;
   };
 };
 
-(window as any).growiFacade = {
-  activateJstest,
+const deactivate = (): void => {
+};
+
+// register activate
+if ((window as any).pluginActivators == null) {
+  (window as any).pluginActivators = {};
+}
+(window as any).pluginActivators['growi-plugin-jstest'] = {
+  activate,
+  deactivate,
 };
