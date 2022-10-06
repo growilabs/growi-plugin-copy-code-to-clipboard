@@ -1,14 +1,24 @@
 // import { useState } from 'react';
 
-export const CodeWithCopyButton = (): JSX.Element => {
+const CopyButton = (): JSX.Element => {
   // const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
-      <button className="btn btn-sm btn-outline-secondary">copy</button>
-      {/* <button onClick={() => setCount(count => count + 1)}>
-        count is {count}
-      </button> */}
-    </div>
+    <button className="btn btn-sm btn-outline-secondary">copy</button>
   );
+};
+
+export const withCopyButton = (Code: React.FunctionComponent<any>): React.FunctionComponent<any> => {
+  return ({ children, inline, ...props }) => {
+    if (inline) {
+      return <Code {...props} inline>{children}</Code>;
+    }
+
+    return (
+      <>
+        <Code {...props}>{children}</Code>
+        <CopyButton />
+      </>
+    );
+  };
 };
