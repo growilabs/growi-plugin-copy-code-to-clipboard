@@ -23,7 +23,7 @@ const deactivate = (): void => {
 if ((window as any).pluginActivators == null) {
   (window as any).pluginActivators = {};
 }
-(window as any).pluginActivators['growi-plugin-jstest'] = {
+(window as any).pluginActivators['growi-plugin-copy-code-to-clipboard'] = {
   activate,
   deactivate,
 };
