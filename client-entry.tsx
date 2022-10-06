@@ -1,11 +1,4 @@
 import { withCopyButton } from './src/CodeWithCopyButton';
-import './src/index.css';
-
-// ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// )
 
 declare const growiFacade: any;
 
