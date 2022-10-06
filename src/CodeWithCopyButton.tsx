@@ -1,10 +1,12 @@
-// import { useState } from 'react';
+import innerText from 'react-innertext';
 
-const CopyButton = (): JSX.Element => {
-  // const [count, setCount] = useState(0);
+const CopyButton = ({ text }: { text: string }): JSX.Element => {
+  const clickHandler = () => {
+    navigator.clipboard.writeText(text);
+  };
 
   return (
-    <button className="btn btn-sm btn-outline-secondary">copy</button>
+    <button className="btn btn-sm btn-outline-secondary" onClick={clickHandler}>copy</button>
   );
 };
 
@@ -17,7 +19,7 @@ export const withCopyButton = (Code: React.FunctionComponent<any>): React.Functi
     return (
       <>
         <Code {...props}>{children}</Code>
-        <CopyButton />
+        <CopyButton text={innerText(children)} />
       </>
     );
   };
