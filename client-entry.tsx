@@ -1,6 +1,4 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom/client'
-// import App from './App'
+import { CodeWithCopyButton } from './src/CodeWithCopyButton';
 import './src/index.css';
 
 // ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -15,8 +13,7 @@ const activate = (): void => {
   const { optionsGenerators } = growiFacade.markdownRenderer;
   optionsGenerators.customGeneratePreviewOptions = (pagePath: string, config: any) => {
     const options = optionsGenerators.generatePreviewOptions(pagePath, config);
-    options.components.code = () => 'code';
-    options.components.lsx = () => <button>lsx</button>;
+    options.components.code = () => <CodeWithCopyButton />;
     return options;
   };
 };
