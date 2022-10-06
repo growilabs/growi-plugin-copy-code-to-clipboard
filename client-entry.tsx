@@ -4,8 +4,9 @@ declare const growiFacade: any;
 
 const activate = (): void => {
   const { optionsGenerators } = growiFacade.markdownRenderer;
-  optionsGenerators.customGeneratePreviewOptions = (pagePath: string, config: any) => {
-    const options = optionsGenerators.generatePreviewOptions(pagePath, config);
+
+  optionsGenerators.customGenerateViewOptions = (...args: any[]) => {
+    const options = optionsGenerators.generateViewOptions(...args);
     const Code = options.components.code;
 
     // replace
