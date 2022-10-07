@@ -3,6 +3,10 @@ import { withCopyButton } from './src/CodeWithCopyButton';
 declare const growiFacade: any;
 
 const activate = (): void => {
+  if (growiFacade == null || growiFacade.markdownRenderer == null) {
+    return;
+  }
+
   const { optionsGenerators } = growiFacade.markdownRenderer;
 
   optionsGenerators.customGenerateViewOptions = (...args: any[]) => {
