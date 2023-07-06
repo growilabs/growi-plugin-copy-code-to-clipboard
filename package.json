@@ -38,6 +38,7 @@
     "vite": "^3.1.0"
   },
   "growiPlugin": {
+    "schemaVersion": "4",
     "types": [
       "script"
     ]
