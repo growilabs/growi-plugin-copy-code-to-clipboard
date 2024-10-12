@@ -9,8 +9,10 @@ const activate = (): void => {
 
   const { optionsGenerators } = growiFacade.markdownRenderer;
 
+  const originalCustomViewOptions = optionsGenerators.customGenerateViewOptions;
+
   optionsGenerators.customGenerateViewOptions = (...args: any[]) => {
-    const options = optionsGenerators.generateViewOptions(...args);
+    const options = originalCustomViewOptions ? originalCustomViewOptions(...args) : optionsGenerators.generateViewOptions(...args);
     const Code = options.components.code;
 
     // replace
